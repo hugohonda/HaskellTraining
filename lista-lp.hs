@@ -28,7 +28,7 @@ parEImpar ls | (length ls)<1 = []
 -- %&*+--+*&%, abcdefedcba, 0110 e 0112110 são palíndromes. Escreva uma função que verifique se uma string é
 -- uma palindrome. A análise deve ser caracter a caracter, sem reversão da string e verificação de igualdade entre elas.
 checaPalindrome (l:ls)  | (length ls) <= 1 = True
-                        | l==(last ls) = checaPalindrome (reverse (drop 1 (reverse ls)))
+                        | l==(last ls) = checaPalindrome (drop ((length ls) - 1) ls)
                         | otherwise = False
 
 -------------------------------------------------------------
