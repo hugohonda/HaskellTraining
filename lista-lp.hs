@@ -31,16 +31,8 @@ checaPalindrome (l:ls)  | (length ls) <= 1 = True
                         | l==(last ls) = checaPalindrome (reverse (drop 1 (reverse ls)))
                         | otherwise = False
 
--- 16. Crie uma função que gere os números primos menores que um dado número.
-primosMenoresQue 0 = []
-primosMenoresQue n = [2..n]
-
--- 18. Escreva uma função que quebre uma string em duas partes no ponto onde estiver uma “/” e retorne uma tupla com as duas partes.
-quebraEmBarra [] = []
---quebraEmBarra (l:ls)  | l/='/' = quebraEmBarra ls
-  --                    | otherwise = ls
-
--- Parte 4
+-------------------------------------------------------------
+-- Parte 4 - Todas
 
 -- 22. Crie uma nova função que utilize a expressão where.
 somaDoisBits x y | x/=0&&x/=1||y/=0&&y/=1 = "Parametros devem ser apenas 0 ou 1"
@@ -63,8 +55,5 @@ potenciaLista = (\ls x -> map (^x) ls)
 -- 26. Crie uma função que tenha guardas e um operando infinito e requeira avaliação preguiçosa para ser executada.
 
 
------
---testes
-teste x = reverse (drop 1 (reverse (tail x)))
-testaIgualUmOuZero x  | x==0||x==1 = True
-                      | otherwise = False
+-------------------------------------------------------------
+-- Parte 5
