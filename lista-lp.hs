@@ -29,8 +29,8 @@ parEImpar ls | (length ls)<1 = [] | otherwise = zip [filter even ls] [filter odd
 checaPalindrome (l:ls) | (length ls) <= 1 = True | l==(last ls) = checaPalindrome (drop ((length ls) - 1) ls) | otherwise = False
 
 -- 18. Escreva uma função que quebre uma string em duas partes no ponto onde estiver uma “/” e retorne uma tupla com as duas partes.
-quebraEmBarra [] = []
-quebraEmBarra (l:ls) | l/='/' = [l:(quebraEmBarra ls)] | otherwise = []
+-- quebraEmBarra [] = []
+-- quebraEmBarra (l:ls) | l/='/' = [l:(quebraEmBarra ls)] | otherwise = []
 
 -- 20. Estenda a função map f xs (retorna a lista dos valores de f aplicada à lista xs) para map3 f xs ys zs (retorna a lista dos resultados de f aplicada às triplas (x,y,z) onde x   xs, y   ys e z   zs).
 -- map3 f xs ys zs =[f x y z | (x,y,z) <- zip3 xs ys zs]
