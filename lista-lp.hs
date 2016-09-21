@@ -14,12 +14,15 @@ dobroDaSomaLista ls | (length ls) == 0 = 0
 
 -- 10. Escreva uma função que retorne o número de vezes que um dado elemento aparece numa lista.
 vezesNaLista x [] = 0
-vezesNaLista x (l:ls) | x==l = 1 + vezesNaLista x ls
-                      | otherwise = vezesNaLista x ls
+vezesNaLista x (l:ls)   | x==l = 1 + vezesNaLista x ls
+                        | otherwise = vezesNaLista x ls
+
+--11. Escreva uma função que receba uma lista e retorne o número de elementos que estão acima da média dos valores da lista.
+acimaMedia (x:xs) = length [y | y <- (x:xs), y > sum (x:xs) `div` length (x:xs)]
 
 -- 14. Escreva uma função que receba uma lista de números e retorne uma tupla com uma lista dos números pares e uma lista dos números ímpares.
-parEImpar ls | (length ls)<1 = []
-             | otherwise = zip [filter even ls] [filter odd ls]
+parEImpar ls    | (length ls)<1 = []
+                | otherwise = zip [filter even ls] [filter odd ls]
 
 -------------------------------------------------------------
 -- Parte 3 - 3 questões
@@ -35,15 +38,14 @@ checaPalindrome (l:ls)  | (length ls) <= 1 = True
 -- Parte 4 - Todas
 
 -- 22. Crie uma nova função que utilize a expressão where.
-somaDoisBits x y | x/=0&&x/=1||y/=0&&y/=1 = "Parametros devem ser apenas 0 ou 1"
-somaDoisBits x y
-  | soma < 1 = "0"
-  | soma == 1 = "1"
-  | soma > 1 = "overflow"
-  where soma = x + y
+somaDoisBits x y    | x/=0&&x/=1||y/=0&&y/=1 = "Parametros devem ser apenas 0 ou 1"
+somaDoisBits x y    | soma < 1 = "0"
+                    | soma == 1 = "1"
+                    | soma > 1 = "overflow"
+                    where soma = x + y
 
 -- 23. Crie uma nova função que utilize a expressão let.
-quantosAnosTem ano =  let anoAtual=2016
+quantosAnosTem ano =    let anoAtual=2016
                         in  anoAtual-ano
 
 -- 24. Crie uma nova função que utilize uma função lambda e a função map.
@@ -57,3 +59,8 @@ potenciaLista = (\ls x -> map (^x) ls)
 
 -------------------------------------------------------------
 -- Parte 5
+
+teste = do
+        putStrLn "O animal é um mamífero?"
+        name <- getLine
+        putStrLn ("Então, " ++ name ++ "")
