@@ -2,7 +2,7 @@
 -- Parte 1 - 2 questões
 
 -- 4. Utilize recursão para criar uma função que calcule 2n - Hugo
-doisElevadoA x  | x==0 = 1 | otherwise = 2*doisElevadoA(x-1)
+doisElevadoA x | x==0 = 1 | otherwise = 2*doisElevadoA(x-1)
 
 -- 5. Escreva uma função que calcule o dobro da soma dos elementos de uma lista - Hugo
 dobroDaSomaLista ls | (length ls) == 0 = 0 | otherwise = 2*(foldl1(+)ls)
@@ -12,7 +12,7 @@ dobroDaSomaLista ls | (length ls) == 0 = 0 | otherwise = 2*(foldl1(+)ls)
 
 -- 10. Escreva uma função que retorne o número de vezes que um dado elemento aparece numa lista - Hugo
 vezesNaLista x [] = 0
-vezesNaLista x (l:ls)   | x==l = 1 + vezesNaLista x ls | otherwise = vezesNaLista x ls
+vezesNaLista x (l:ls) | x==l = 1 + vezesNaLista x ls | otherwise = vezesNaLista x ls
 
 --11. Escreva uma função que receba uma lista e retorne o número de elementos que estão acima da média dos valores da lista - Éden
 acimaMedia (x:xs) = length [y | y <- (x:xs), y > sum (x:xs) `div` length (x:xs)]
@@ -26,7 +26,7 @@ parEImpar ls | (length ls)<1 = [] | otherwise = zip [filter even ls] [filter odd
 -- 17. Palindrome é uma seqüência de caracteres igual se lida da esquerda para a direita ou ao contrário. As seqüências - Hugo
 -- %&*+--+*&%, abcdefedcba, 0110 e 0112110 são palíndromes. Escreva uma função que verifique se uma string é
 -- uma palindrome. A análise deve ser caracter a caracter, sem reversão da string e verificação de igualdade entre elas.
-checaPalindrome (l:ls)  | (length ls) <= 1 = True | l==(last ls) = checaPalindrome (drop ((length ls) - 1) ls) | otherwise = False
+checaPalindrome (l:ls) | (length ls) <= 1 = True | l==(last ls) = checaPalindrome (drop ((length ls) - 1) ls) | otherwise = False
 
 -- 18. Escreva uma função que quebre uma string em duas partes no ponto onde estiver uma “/” e retorne uma tupla com as duas partes.
 quebraEmBarra [] = []
