@@ -1,5 +1,17 @@
 -------------------------------------------------------------
--- Parte 1 - 2 questões
+-- Parte 1 - 3 questões
+
+-- 1. Escreva uma função que receba uma lista de 4 elementos e verifique se todos os elementos são iguais. - Éden
+
+-- A função funciona para uma lista de vários elementos inclusive de 4.
+-- A função, primeiramente, define que os elementos das listas recebidas devem ser do mesmo tipo
+-- e esses tipos devem fazer parte do typeclass Eq. Assim, esses elementos podem ser comparados.
+-- A função então, simplesmente chama a função (==). Por se tratar de uma lista sendo comparada
+-- com outra, a função (==) irá comparar elemento a elemento na ordem. Caso elas não possuam os mesmo elemntos
+-- ou possuam tamanhos diferentes, a função retorna Falso.
+
+todosElemIguais :: (Eq a) => [a] -> [a] -> Bool
+todosElemIguais xs ys = xs == ys
 
 -- 4. Utilize recursão para criar uma função que calcule 2n - Hugo
 doisElevadoA x | x==0 = 1 | otherwise = 2*doisElevadoA(x-1)
