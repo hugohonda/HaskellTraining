@@ -49,17 +49,93 @@ quantosAnosTem ano = let anoAtual=2016 in anoAtual-ano
 potenciaLista = (\ls x -> map (^x) ls)
 
 -- 25. Crie uma função que seja polimórfica e que use o operador de composição de funções.
+-- O programa retorna o quadrado do tamanho de uma lista de qualquer tipo (polimórfica). Alex
+tam [] = 0
+tam (x:xs) = 1 + tam xs
 
+quadtam x = ((^2).tam) x
 
 -- 26. Crie uma função que tenha guardas e um operando infinito e requeira avaliação preguiçosa para ser executada.
-
+-- Algoritmo lista os n primeiros impares se t==1, e os n primeiros pares se t==0, avaliação preguiçosa
+-- é feita na lsita infinita, que só é avaliada depois que n é definido. - Alex
+listaImparesPares n t
+                      | t == 0  = take n [2,4..]
+                      | t == 1  = take n [1,3..]
 
 -------------------------------------------------------------
 -- Parte 5
 
---
+-- 28 - O algoritmo pergunta ao usuário as características do animal visto, e retorna 
+-- a espécie do animal, ou retorna que o animal visto não é conhecido. - Alex
 
-teste = do
- putStrLn "O animal é um mamífero?"
- name <- getLine
- putStrLn ("Então, " ++ name ++ "")
+animal = do putStr "\nO animal visto é um mamífero?? (s/n)>"
+            ans <- getLine
+            if head ans=='S' || head ans=='s' then mamifero
+            else do putStr "\nO animal visto é uma ave? (s/n)>"
+                    ans <- getLine
+                    if head ans=='S' || head ans=='s' then ave
+                    else putStr "\nAnimal não é conhecido\n" 
+			
+mamifero = do putStr "\nO animal visto é carnivoro?? (s/n)>"
+              ans <- getLine
+              if head ans=='S' || head ans=='s' then carniv
+			  else do putStr "\nO animal visto é ungulado? (s/n)>"
+			          ans <-getLine
+			          if head ans=='S' || head ans=='s' then ungulado
+			          else putStr "\nAnimal não é conhecido\n"
+
+carniv  =   do putStr "\nO animal visto tem cor amarelada? (s/n)>"
+               ans <- getLine
+               if head ans=='S' || head ans=='s' then amarelada
+               else putStr "\nAnimal não é conhecido\n" 
+
+amarelada = do putStr "\nO animal visto tem manchas pretas?? (s/n)>"
+               ans <- getLine 
+               if head ans=='S' || head ans=='s' then putStr "\nO animal visto é um Guepardo!\n"   
+               else do putStr "\nO animal visto tem listas pretas? (s/n)>"
+                       ans <- getLine
+                       if head ans=='S' || head ans=='s' then putStr "\nO animal visto é um Tigre!\n" 
+                       else putStr "\nAnimal não é conhecido\n" 
+
+ungulado = do putStr "\nO animal visto tem pescoço grande?? (s/n)>"
+              ans <- getLine
+              if head ans=='S' || head ans=='s' then pescgrande
+              else do putStr "\nO animal visto tem listas pretas? (s/n)>"
+                      ans <- getLine
+                      if head ans=='S' || head ans=='s' then putStr "\nO animal visto é uma Zebra!\n" 
+                      else putStr "\nAnimal não é conhecido\n"
+
+pescgrande = do putStr "\nO animal visto tem pernas grandes?? (s/n)>"
+                ans <- getLine
+                if head ans=='S' || head ans=='s' then putStr "\nO animal visto é uma Girafa!\n" 
+                else putStr "\nAnimal não é conhecido\n"
+
+ave =    do putStr "\nO animal visto voa bem?? (s/n)>"
+            ans <- getLine
+            if head ans=='S' || head ans=='s' then voabem
+            else do putStr "\nO animal visto voa? (s/n)>"
+                    ans <- getLine
+                    if head ans=='N' || head ans=='n' then naovoa
+                    else putStr "\nAnimal não é conhecido\n"
+
+voabem = do putStr "\nO animal visto tem longas asas?? (s/n)>"
+            ans <- getLine
+            if head ans=='S' || head ans=='s' then putStr "\nO animal visto é um Albatroz!\n"
+            else putStr "\nAnimal não é conhecido\n"
+
+
+naovoa = do putStr "\nO animal visto tem pescoço comprido?? (s/n)>"
+            ans <- getLine
+            if head ans=='S' || head ans=='s' then putStr"\nO animal visto é um Avestruz!\n"
+            else do putStr "\nO animal visto nada? (s/n)>"
+                    ans <- getLine
+                    if head ans=='S' || head ans=='s' then nada
+                    else putStr "\nAnimal não é conhecido\n"
+
+nada = do putStr "\nO animal visto é preto e branco?? (s/n)>"
+          ans <- getLine
+          if head ans=='S' || head ans=='s' then putStr "\nO animal visto é um Pinguim!\n" 
+		  else putStr "\nAnimal não é conhecido\n"
+		
+
+
