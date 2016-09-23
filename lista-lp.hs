@@ -31,7 +31,7 @@ doisElevadoA x | x==0 = 1 | otherwise = 2*doisElevadoA(x-1)
 dobroDaSomaLista ls | (length ls) == 0 = 0 | otherwise = 2*(foldl1(+)ls)
 
 -------------------------------------------------------------
--- Parte 2 - 3 questões
+-- Parte 2 - 4 questões
 
 -- 10. Escreva uma função que retorne o número de vezes que um dado elemento aparece numa lista - Hugo
 
@@ -69,7 +69,7 @@ indexOf (x:xs) a  | null (x:xs) = 0
 parEImpar ls | (length ls)<1 = [] | otherwise = zip [filter even ls] [filter odd ls]
 
 -------------------------------------------------------------
--- Parte 3 - 3 questões
+-- Parte 3 - 4 questões
 
 -- 17. Palindrome é uma seqüência de caracteres igual se lida da esquerda para a direita ou ao contrário. As seqüências - Hugo
 -- %&*+--+*&%, abcdefedcba, 0110 e 0112110 são palíndromes. Escreva uma função que verifique se uma string é
