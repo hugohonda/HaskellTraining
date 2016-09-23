@@ -29,6 +29,17 @@ vezesNaLista x (l:ls) | x==l = 1 + vezesNaLista x ls | otherwise = vezesNaLista 
 --11. Escreva uma função que receba uma lista e retorne o número de elementos que estão acima da média dos valores da lista - Éden
 acimaMedia (x:xs) = length [y | y <- (x:xs), y > sum (x:xs) `div` length (x:xs)]
 
+-- 13. Escreva uma função que receba uma lista e retorne a posição de um dado
+-- elemento nessa lista, iniciando de 0. Verifica primeiramente se a lista não é nula.
+-- Caso sim, retorna 0. Caso não, cai no segundo guard que verifica se o elemento
+-- pertence a lista tirando o primeiro elemento. Se sim, chama recursivamente 1 + (a lista sem
+-- o primeiro elemento) e o caractere procurado. Caso não pertença, cairá no
+-- guard mais geral que retornará 0. - Éden
+
+indexOf (x:xs) a  | null (x:xs) = 0
+                  | a `elem` xs = 1 + indexOf xs a
+                  | otherwise = 0
+
 -- 14. Escreva uma função que receba uma lista de números e retorne uma tupla com uma lista dos números pares e uma lista dos números ímpares - Hugo
 parEImpar ls | (length ls)<1 = [] | otherwise = zip [filter even ls] [filter odd ls]
 
