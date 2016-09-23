@@ -49,6 +49,17 @@ vezesNaLista x (l:ls) | x==l = 1 + vezesNaLista x ls | otherwise = vezesNaLista 
 --11. Escreva uma função que receba uma lista e retorne o número de elementos que estão acima da média dos valores da lista - Éden
 acimaMedia (x:xs) = length [y | y <- (x:xs), y > sum (x:xs) `div` length (x:xs)]
 
+-- 13. Escreva uma função que receba uma lista e retorne a posição de um dado
+-- elemento nessa lista, iniciando de 0. Verifica primeiramente se a lista não é nula.
+-- Caso sim, retorna 0. Caso não, cai no segundo guard que verifica se o elemento
+-- pertence a lista tirando o primeiro elemento. Se sim, chama recursivamente 1 + (a lista sem
+-- o primeiro elemento) e o caractere procurado. Caso não pertença, cairá no
+-- guard mais geral que retornará 0. - Éden
+
+indexOf (x:xs) a  | null (x:xs) = 0
+                  | a `elem` xs = 1 + indexOf xs a
+                  | otherwise = 0
+
 -- 14. Escreva uma função que receba uma lista de números e retorne uma tupla com uma lista dos números pares e uma lista dos números ímpares - Hugo
 
 -- Inicialmente testa-se se o comprimento da lista é menor que 1, isto resulta em uma lista vazia
@@ -84,6 +95,32 @@ checaPalindrome (l:ls) | (length ls) <= 1 = True | l==(last ls) = checaPalindrom
 
 -- 20. Estenda a função map f xs (retorna a lista dos valores de f aplicada à lista xs) para map3 f xs ys zs (retorna a lista dos resultados de f aplicada às triplas (x,y,z) onde x   xs, y   ys e z   zs).
 -- map3 f xs ys zs =[f x y z | (x,y,z) <- zip3 xs ys zs]
+
+-- 21. Implemente um avaliador de expressões PRÉ-FIXADAS que receba uma string contendo a expressão na forma pré-fixada e retorne o seu valor.
+-- As operações que ele deve reconhecer são: soma, subtração, divisão e multiplicação de números inteiros. -- Éden
+
+-- Transforma a lista em uma tupla (char, [char], [char]) e verifica os padrões de acordo com o case.
+-- Exemplo:
+-- ('+', a, b) -> a + b. Como a e b são [char] então é feito a conversão com o read e retirando-se a ambiguidade com :: Integer.
+
+validar xs = case (transformaTupla xs) of ('+', a, b) -> read a + read b :: Integer
+                                          ('-', a, b) -> read a - read b :: Integer
+                                          ('/', a, b) -> read a `quot` read b :: Integer
+                                          ('*', a, b) -> read a * read b :: Integer
+
+-- Recebe uma lista de char e transforma numa tupla (a,b,c). Onde a é o primeiro elemento da lista.
+-- b é uma string até o aparecimento de ' '. E c é uma string até o aparecimento de ' '
+-- retirando o tamanho da string b + 3 (1 caractere, espaço, espaço final de a)
+
+transformaTupla :: String -> (Char, [Char], [Char])
+transformaTupla xs = (a,b,c) where a = head xs; b = proximoNumero (drop 2 xs); c = drop (length b+3) xs
+
+-- Recebe uma lista de char e a percorre até encontrar o primeiro elemento que seja ' '.
+-- Retorna a lista até aquele elemento
+
+proximoNumero :: [Char] -> [Char]
+proximoNumero (x:xs)  | x/=' ' = x:proximoNumero xs
+                      | otherwise = []
 
 -------------------------------------------------------------
 -- Parte 4 - Todas
