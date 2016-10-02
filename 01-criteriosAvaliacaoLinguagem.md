@@ -4,11 +4,13 @@
 
 ###* Simplicidade Global
   - diminuir maneiras de fazer a mesma coisa (operação particular)
+
     ```
     ex:
     cont=cont+1 / cont++ / cont+=1 -> mesma coisa
     ```
   - sobrecarga deve ser bem utilizada
+
     ```
     ex:
     int Quadrado(int x) { return x * x; }
