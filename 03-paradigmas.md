@@ -1,17 +1,17 @@
 #Paradigmas de Linguagem
 
-##1. Imperativas
+##1. Imperativa
   - comportamento imperativo: expressa ordens, uma sequência de instruções para o computador executar
   - faz atualização de variáveis
   - "faça isso, depois aquilo, depois aquilo..." - passo a passo
 
-##2. Funcionais
+##2. Funcional
   - comportamento funcional: aplica funções definidas e parâmetros determinados
   - solução são os valores a retornar
   - não tem atribuição
   - muita recursividade
 
-##3. Lógicas
+##3. Lógico
   - comportamento lógico: age sob regras determinadas
   - solução é a relação entre entidades do discurso
   - regras especificadas sem ordem
